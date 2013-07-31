@@ -1,0 +1,267 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+<script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/src/infobox.js"></script>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      html, body, #map-canvas {
+        margin: 0 auto;
+        padding: 0;
+        height: 500px;border:0;
+      }
+	  
+	  #map-canvas {
+	  z-index:0;margin-top:20px;width:900px;border:1px solid #dfdfdf;padding:10px;
+	  }
+	  
+	  .infowindow {
+	  float:left;border:1px solid black; padding:3px; margin:1em;
+	  }
+	  
+	  .container {
+	  background-color:;
+	  }
+	  
+	  .InfoBox {
+	  background-color:green;color:red;
+	  }
+	  
+	  h1 {
+	  font: bold 25px arial; text-align:center;margin:0 auto;padding-top:10px;
+	  }
+	  
+	  h1#title {
+	  font: bold 25px arial;color:white;padding-top:17px;
+	  }
+	  p#text {
+	 font-family:arial; font-size:12px;text-align:;width:500px;float:left;display:block;line-height:2.5;margin-left:50px;margin-top:22px;
+	 color:#7f8c47;
+	  }
+	  
+	  header{background:#a2c227 url("texture.png") ;box-shadow: 0px 1px 4px #b7b7b7;z-index:100;height:71px;width:100%;}
+	  
+	  #description {
+	  width:912px;
+	  height:134px;background-color:#f3fec7;margin:0 auto; border:5px solid #e9f6b3;margin-top:20px;
+	  }
+	  
+	  .bin {
+	  margin-top:19px;float:left;display:block;
+	  }
+	  
+	  #group {
+	  margin:0 auto;width:700px;
+	  }
+    </style>
+	<header>
+	<a href="#"><h1 id="title"><img src="logo.png" /></h1></a>
+
+    </header>
+	
+	<div id="description">	<div id="group"><img src="bin.png" class="bin" /><p id="text">This is a map of all of the recycling centers located in the state of Louisiana. Click on a 'recycling icon' to find out that location's address and phone number, as well as information about the items they take. I hope you enjoy my applicaiton. Thanks!</p></div></div>
+	
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script>
+var map;
+// initialize the map application and its configs
+function initialize() {
+
+
+
+
+// configs for map
+  var mapOptions = {
+  zoom: 7,
+    center: new google.maps.LatLng(31.0413, -91.8360),
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+
+  }
+  // make the map
+  map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions);
+
+  // marker information
+  
+  // config the marker 
+  var myLatLng = new google.maps.LatLng(30.233397, -92.042077);
+  var myLatLng2 = new google.maps.LatLng(30.016230, -89.951120);
+  var myLatLng3 = new google.maps.LatLng(29.953202, -90.174195);
+  var myLatLng4 = new google.maps.LatLng(29.979738, -90.019660);
+  var myLatLng5 = new google.maps.LatLng(30.504434, -90.519763);
+  var myLatLng6 = new google.maps.LatLng(29.953843, -90.069606);
+  var marker = new google.maps.Marker({
+      position: myLatLng,
+      map: map,
+	  title: 'Hello, world!',
+	  animation: google.maps.Animation.DROP,
+      icon: 'newpin.png',
+	  marker: 'newpin.png'
+  });
+  
+    var marker2 = new google.maps.Marker({
+      position: myLatLng2,
+      map: map,
+	  title: 'Hello, world!',
+	  animation: google.maps.Animation.DROP,
+      icon: 'newpin.png',
+	  marker: 'newpin.png'
+  });
+ 
+ var marker3 = new google.maps.Marker({
+      position: myLatLng3,
+      map: map,
+	  title: 'Hello, world!',
+	  animation: google.maps.Animation.DROP,
+      icon: 'newpin.png',
+	  marker: 'newpin.png'
+  });
+  
+   var marker4 = new google.maps.Marker({
+      position: myLatLng4,
+      map: map,
+	  title: 'Hello, world!',
+	  animation: google.maps.Animation.DROP,
+      icon: 'newpin.png',
+	  marker: 'newpin.png'
+  });
+  
+   var marker5 = new google.maps.Marker({
+      position: myLatLng5,
+      map: map,
+	  title: 'Hello, world!',
+	  animation: google.maps.Animation.DROP,
+      icon: 'newpin.png',
+	  marker: 'newpin.png'
+  });
+  
+     var marker6 = new google.maps.Marker({
+      position: myLatLng6,
+      map: map,
+	  title: 'Hello, world!',
+	  animation: google.maps.Animation.DROP,
+      icon: 'newpin.png',
+	  marker: 'newpin.png'
+  });
+
+  // create marker content 
+  var content = '<div class="container"><h1>Welcome</h1>'+'<!--img src="bustour.png" class="infowindow" /--><p>I am currently testing the functionality of the custom Google API engine. This is my first time building a custom map through this system. I am learning how to configure it and code it to my liking through Javascript.</p></div>'
+
+  // create and config the info window
+ var infowindow = new google.maps.InfoWindow({
+      content: content
+  });
+  
+  
+  // add click behavior to marker info window 
+ google.maps.event.addListener(marker, 'click', function() {
+    infowindow.open(map,marker);
+  });
+
+  //add the click handlers to each marker
+						//so that it opens an infowindow.
+						
+
+  
+  // add KML data to map
+  //var kmlLayer = new google.maps.KmlLayer({
+   // url: 'http://kml-samples.googlecode.com/svn/trunk/kml/Placemark/placemark.kml'
+  //});
+ // kmlLayer.setMap(map);
+ 
+ 
+  layer = new google.maps.FusionTablesLayer({
+    query: {
+      select: '\'cities\'',
+      from: '1o_Ad19dKFCISOhC1U00OQThCOZAydvPC2yb3OHk',
+	  where: '',
+	  limit: '',
+	  styles: [{ markerOptions: {iconName: "newpin.png" }}]
+  
+    }
+  });
+  layer.setMap(map);
+
+  // add a streetview for map
+  // create pano config
+  var panoramaOptions = {
+    position: new google.maps.LatLng(41.850033, -87.6500523),
+    pov: {
+      heading: 34,
+      pitch: 10
+    }
+  };
+  // create pano and config
+  var panorama = new  google.maps.StreetViewPanorama(document.getElementById('pano'),panoramaOptions);
+  // display pano
+  map.setStreetView(panorama);
+  
+  
+  map.set('styles', [
+  {
+    featureType: 'road',
+    elementType: 'geometry',
+    stylers: [
+      { color: '#b0ee89' },
+      { weight: 0.6 }
+    ]
+  }, {
+    featureType: 'road',
+    elementType: 'labels',
+    stylers: [
+      { saturation: 5 },
+	  { hue: '#57bb1a' },
+      { invert_lightness: true }
+    ]
+  }, 
+  {
+    featureType: 'water',
+    elementType: 'geometry',
+    stylers: [
+      { saturation: 30 },
+	  { hue: '#e2eeff' },
+      { lightness: 60 }
+    ]
+  },
+  
+  {
+    featureType: 'landscape',
+    elementType: 'geometry',
+    stylers: [
+      { hue: '#ffff00' },
+      { gamma: 1.4 },
+      { saturation: 82 },
+	  
+      { lightness: 96 }
+    ]
+  }, {
+    featureType: 'poi.school',
+    elementType: 'geometry',
+    stylers: [
+      { hue: '#fff700' },
+      { lightness: -15 },
+      { saturation: 99 }
+    ]
+  }
+]);
+
+  
+  
+  
+  
+}
+
+
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+  </body>
+</html>
+
